@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screen/TaskDetail/DetailScreen.dart';
+import 'screen/Authen.dart';
 
 import 'model/NavItems.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
                 appBarTheme: AppBarTheme(color: Colors.white, elevation: 0),
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
-              home: DetailScreen(), // For login page change to LoginScreen()
+              home: LoginScreen(), // For login page change to LoginScreen()
             ),
           );
         });
