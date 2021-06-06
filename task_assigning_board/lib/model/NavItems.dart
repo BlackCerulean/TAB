@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_assigning_board/screen/Profile.dart';
 import 'package:task_assigning_board/screen/TaskHome/tab_home.dart';
 import 'package:task_assigning_board/screen/TaskRequest/task_notify.dart';
+import 'package:task_assigning_board/screen/AddTask/AddtaskPage.dart';
 
 class NavItem {
   final int id;
@@ -40,6 +41,8 @@ class NavItems extends ChangeNotifier {
     NavItem(
       id: 2,
       icon: "assets/icons/add-task Vector.png",
+      destination: AddTaskScreen(),
+
       // destination: favouritePage(),
     ),
     NavItem(
