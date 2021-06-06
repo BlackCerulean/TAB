@@ -5,6 +5,7 @@ import 'package:task_assigning_board/screen/TaskDetail/DetailScreen.dart';
 import 'Register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:task_assigning_board/screen/TaskHome/tab_home.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -89,8 +90,10 @@ class _LoginScreen extends State<LoginScreen> {
                       labelText: 'Email',
                       labelStyle: TextStyle(color: Colors.black26)),
                   validator: (value) {
-                    if (value.isNotEmpty && value.length < 11) {
-                      return 'Your Email is too short';
+                    if (value.isNotEmpty) {
+                      return null;
+                    } else if(value.isNotEmpty && value.length < 11){
+                      return 'Your email is too short';
                     } else {
                       return 'Please enter your Email';
                     }
@@ -125,9 +128,11 @@ class _LoginScreen extends State<LoginScreen> {
                   ),
                   obscuringCharacter: '*',
                   validator: (value) {
-                    if (value.isNotEmpty && value.length < 6) {
+                    if (value.isNotEmpty){
+                      return null;   
+                    } else if (value.isNotEmpty && value.length < 6) {
                       return 'Your password is too short';
-                    } else if (value.isEmpty) {
+                    } else {
                       return 'Please enter your password';
                     }
                   },
@@ -160,7 +165,7 @@ class _LoginScreen extends State<LoginScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DetailScreen()));
+                            builder: (context) => TABLanding()));
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(80.0)),

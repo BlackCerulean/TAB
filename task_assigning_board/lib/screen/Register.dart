@@ -123,7 +123,9 @@ class _RegisterScreen extends State<RegisterScreen> {
                     hintStyle: TextStyle(color: Colors.black26),
                   ),
                   validator: (value) {
-                    if (value.isNotEmpty && value.length < 11) {
+                    if (value.isNotEmpty)  {
+                      return null;
+                    } else if (value.isNotEmpty && value.length < 11){
                       return 'Your Email is too short';
                     } else {
                       return 'Please enter your Email';
@@ -154,7 +156,9 @@ class _RegisterScreen extends State<RegisterScreen> {
                     hintStyle: TextStyle(color: Colors.black26),
                   ),
                   validator: (value) {
-                    if (value.isNotEmpty && value.length < 3) {
+                    if  (value.isNotEmpty){
+                      return null;
+                    } else if (value.isNotEmpty && value.length < 3){
                       return 'Your name is too short';
                     } else {
                       return 'Please give us your name';
@@ -185,10 +189,12 @@ class _RegisterScreen extends State<RegisterScreen> {
                     hintStyle: TextStyle(color: Colors.black26),
                   ),
                   validator: (value) {
-                    if (value.isNotEmpty && value.length < 3) {
-                      return 'Your lastname is too short';
+                    if (value.isNotEmpty){
+                      return null;
+                    } else if (value.isNotEmpty && value.length < 3){
+                     return 'Your lastname is too short';
                     } else {
-                      return 'Please give us your lastname';
+                       return 'Please give us your lastname';
                     }
                   },
                 ),
