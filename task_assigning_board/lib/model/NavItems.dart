@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:task_assigning_board/screen/Profile.dart';
+import 'package:task_assigning_board/screen/TaskHome/tab_home.dart';
+import 'package:task_assigning_board/screen/TaskRequest/task_notify.dart';
 
 class NavItem {
   final int id;
@@ -31,28 +34,23 @@ class NavItems extends ChangeNotifier {
   List<NavItem> items = [
     NavItem(
       id: 1,
-      icon: "assets/icons/home.svg",
-      // destination: HomeScreen(),
+      icon: "assets/icons/task-white Vector.png",
+      destination: TABLanding(),
     ),
     NavItem(
       id: 2,
-      icon: "assets/icons/heart.svg",
+      icon: "assets/icons/add-task Vector.png",
       // destination: favouritePage(),
     ),
     NavItem(
       id: 3,
-      icon: "assets/icons/library_add.svg",
-      // destination: AddRecipe(),
+      icon: "assets/icons/profile Vector.png",
+      destination: Profile(),
     ),
     NavItem(
       id: 4,
-      icon: "assets/icons/pot.svg",
-      // destination: equipPage(),
-    ),
-    NavItem(
-      id: 5,
-      icon: "assets/icons/user.svg",
-      // destination: ProfileScreen(),
+      icon: "assets/icons/notification Vectior.png",
+      destination: TABRequest(),
     ),
   ];
 }

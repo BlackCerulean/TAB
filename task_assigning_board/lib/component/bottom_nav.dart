@@ -3,30 +3,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:task_assigning_board/model/NavItems.dart';
 
-import '../size_config.dart';
-
 class MyBottomNavBar extends StatelessWidget {
-  const MyBottomNavBar({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    double defaultSize = SizeConfig.defaultSize;
     return Consumer<NavItems>(
       builder: (context, navItems, child) => Container(
-        padding: EdgeInsets.symmetric(horizontal: defaultSize * 3), //30
-        //just for demo
-        // height: 80,
+        padding: EdgeInsets.symmetric(horizontal: 25), //30
+        height: 50,
         decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, -7),
-              blurRadius: 30,
-              color: Color(0xFF4B1A39).withOpacity(0.2),
-            ),
-          ],
+          color: Color(0xFF7087FF),
         ),
         child: SafeArea(
           child: Row(
@@ -60,10 +45,10 @@ class MyBottomNavBar extends StatelessWidget {
   IconButton buildIconNavBarItem(
       {String icon, Function press, bool isActive = false}) {
     return IconButton(
-      icon: SvgPicture.asset(
+      icon: Image.asset(
         icon,
-        // color: isActive ? kPrimaryColor : Color(0xFFD1D4D4),
-        height: 22,
+        color: isActive ? Colors.white : Color(0xFFD1D4D4),
+        height: 50,
       ),
       onPressed: press,
     );

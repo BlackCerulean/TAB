@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_assigning_board/screen/Authen.dart';
+import 'package:task_assigning_board/screen/TaskHome/tab_home.dart';
+import 'package:task_assigning_board/screen/TaskRequest/task_notify.dart';
 import 'screen/TaskDetail/DetailScreen.dart';
 import 'model/NavItems.dart';
 
@@ -10,7 +12,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-   // This widget is the root of your application.
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -29,10 +31,9 @@ class MyApp extends StatelessWidget {
                 appBarTheme: AppBarTheme(color: Colors.white, elevation: 0),
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
-              home: LoginScreen(), // For login page change to LoginScreen()
+              home: TABLanding(), // For login page change to LoginScreen()
             ),
           );
         });
   }
-  
 }
