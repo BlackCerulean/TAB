@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task_assigning_board/screen/Authen.dart';
 
 class DetailInformation extends StatefulWidget {
   final DocumentSnapshot taskDB;
@@ -17,7 +18,7 @@ class _DetailInformationState extends State<DetailInformation> {
     return StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Task')
-            .doc('G0H1vswtAJtcTZTlxWXI')
+            .doc('g5W98MfrYUtzfdccWsmw')
             .snapshots(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
