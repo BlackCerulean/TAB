@@ -45,6 +45,10 @@ class TABLanding extends StatelessWidget {
                               ),
                             ],
                           ),
+                          SizedBox(width: 50),
+                          Image.asset(
+                            'assets/icons/task Vector.png',
+                          ),
                         ],
                       ),
                     ),
@@ -52,7 +56,7 @@ class TABLanding extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: Container(
                         alignment: Alignment.centerLeft,
-                        color: Colors.deepPurpleAccent,
+                        color: Color(0xFF7087FF),
                         height: 2,
                         width: 235,
                       ),
@@ -61,7 +65,7 @@ class TABLanding extends StatelessWidget {
                       flex: 5,
                       child: Padding(
                         padding:
-                            EdgeInsets.fromLTRB(5, 0, 2, 0), // นอน 16 ตั้ง 20
+                            EdgeInsets.fromLTRB(0, 0, 0, 0), // นอน 16 ตั้ง 20
                         child: GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:task_assigning_board/screen/TaskDetail/DetailScreen.dart';
 
 class TabCard extends StatelessWidget {
   final DocumentSnapshot index;
@@ -21,17 +22,17 @@ class TabCard extends StatelessWidget {
         var task = snapshot.data.data();
         return InkWell(
           onTap: () {
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //           builder: (context) => RecipeScreen(
-            //                 recipeIndex: snapshot.data,
-            //               )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailScreen(
+                          taskInfo: index,
+                        )));
           },
           child: Stack(
             children: [
               Padding(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.3,
                   width: MediaQuery.of(context).size.width * 0.5,
@@ -89,16 +90,20 @@ class TabCard extends StatelessWidget {
                                     ),
                                   ),
 
-                                  //Client
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Text(
-                                      task["Company"],
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.black,
+                                  Row(
+                                    children: [
+                                      //Client
+                                      Padding(
+                                        padding: EdgeInsets.all(8),
+                                        child: Text(
+                                          task["Company"],
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.black,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                   Spacer(),
                                 ],
@@ -112,23 +117,16 @@ class TabCard extends StatelessWidget {
                   ),
                 ),
               ),
-              // Positioned(
-              //   left: 62,
-              //   top: 0,
-              //   child: Container(
-              //     child: CircleAvatar(
-              //       backgroundImage: NetworkImage("image"),
-              //       backgroundColor: Colors.transparent,
-              //       radius: 58.0,
-              //     ),
-              //     decoration: new BoxDecoration(
-              //         shape: BoxShape.circle,
-              //         border: new Border.all(
-              //           // color: kPrimaryColor,
-              //           width: 4.5,
-              //         )),
-              //   ),
-              // ),
+              Positioned(
+                left: 130,
+                top: 138,
+                child: Container(
+                  child: Image.asset(
+                    "assets/icons/${task['Type'] == 'Web Application' ? 'smol web-app vector.png' : task['Type'] == 'Mobile' ? 'mobile-app Vector.png' : task['Type'] == 'Graphic Design' ? 'graphic Vector.png' : 'video-edit Vector.png'}",
+                    scale: 0.7,
+                  ),
+                ),
+              ),
             ],
           ),
         );
