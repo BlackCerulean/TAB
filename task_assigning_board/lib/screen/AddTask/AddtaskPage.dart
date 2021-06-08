@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_assigning_board/component/backgroundRegis.dart';
+import 'package:task_assigning_board/component/bottom_nav.dart';
 
 import '../../size_config.dart';
 
@@ -593,6 +594,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           ),
         ],
       ),
-    ));
+    ),
+    bottomNavigationBar: MyBottomNavBar(),
+    );
   }
 }

@@ -47,13 +47,13 @@ class NavItems extends ChangeNotifier {
     ),
     NavItem(
       id: 3,
-      icon: "assets/icons/profile Vector.png",
-      destination: Profile(),
+      icon: "assets/icons/notification Vectior.png",
+      destination: TABRequest(),
     ),
     NavItem(
       id: 4,
-      icon: "assets/icons/notification Vectior.png",
-      destination: TABRequest(),
+      icon: "assets/icons/profile Vector.png",
+      destination: Profile(),
     ),
   ];
 }
