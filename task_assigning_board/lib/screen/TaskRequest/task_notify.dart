@@ -61,17 +61,95 @@ class TABRequest extends StatelessWidget {
                       child: Padding(
                         padding:
                             EdgeInsets.fromLTRB(5, 0, 2, 0), // นอน 16 ตั้ง 20
-                        child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            // mainAxisSpacing: 5,
-                            // crossAxisSpacing: 5,
-                          ),
+                        child: ListView.builder(
                           itemCount: snapshot.data.docs.length,
-                          itemBuilder: (context, index) => TaskCard(
-                            index: snapshot.data.docs[index],
-                          ),
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              // use inkWell to make our recipe on each categories clickable
+                              onTap: () {
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => RecipeScreen(
+                                //               recipeIndex: snapshot.data.docs[index],
+                                //             )));
+                              },
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        height: 60,
+                                        width: 300,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 8,
+                                              ),
+                                              child: Text(
+                                                snapshot.data.docs[index]
+                                                    ['ProjectName'],
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 8,
+                                              ),
+                                              child: Text(
+                                                snapshot.data.docs[index]
+                                                    ['Type'],
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 8,
+                                              ),
+                                              child: Text(
+                                                "${snapshot.data.docs[index]['Company']}: Freelance Wages: ${snapshot.data.docs[index]['Rewards']}",
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Text(
+                                        'Pending',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 10.0 * 1,
+                                    ),
+                                    child: Container(
+                                      color: Color(0xFF7087FF),
+                                      height: 10 * 0.1,
+                                      width: 10.0 * 50,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
