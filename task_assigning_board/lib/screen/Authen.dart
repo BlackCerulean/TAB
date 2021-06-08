@@ -13,34 +13,61 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
   @override
   State<LoginScreen> createState() => _LoginScreen();
+
+  Future signingOut() async{
+    try{
+       Firebase.initializeApp();
+      return await FirebaseAuth.instance.signOut();
+    }catch (e){
+     print(e.toString());
+       return null;
+     }
+  }
+  
+}
+
+    
+class Authenticate extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //Instance to know the authentication state.
+    final firebaseUser = context.watch<User>();
+    
+    if (firebaseUser != null) {
+      //Means that the user is logged in already and hence navigate to HomePage
+      return TABLanding();
+    }
+    //The user isn't logged in and hence navigate to SignInPage.
+    return LoginScreen();
+  }
 }
 
 class _LoginScreen extends State<LoginScreen> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  User user;
-  Future<void> getUserdata() async {
-    setState(() {
-      final User userData = auth.currentUser;
-      user = userData;
-      print(userData.uid);
-    });
-  }
+ 
+ 
+  // User user;
+  // Future<void> getUserdata() async {
+  //   setState(() {
+  //     final User userData = auth.currentUser;
+  //     user = userData;
+  //     print(userData.uid);
+  //   });
+  // }
 
-  @override
-  void initState() {
-    super.initState();
-    getUserdata();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getUserdata();
+  // }
 
   String _email, _password;
   @override
   Widget build(BuildContext context) {
-    final auth = FirebaseAuth.instance;
     Size size = MediaQuery.of(context).size;
     return Form(
       key: _formkey,
       child: Scaffold(
-
         body: BackgroundAuthen(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +189,7 @@ class _LoginScreen extends State<LoginScreen> {
                     //   String message = response.message;
                     //   print('title = $title, message = $message');
                     // });
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => TABLanding()));
