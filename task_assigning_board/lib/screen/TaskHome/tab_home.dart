@@ -65,7 +65,7 @@ class TABLanding extends StatelessWidget {
                       flex: 5,
                       child: Padding(
                         padding:
-                            EdgeInsets.fromLTRB(0, 0, 0, 0), // นอน 16 ตั้ง 20
+                            EdgeInsets.symmetric(vertical: 0), // นอน 16 ตั้ง 20
                         child: GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(

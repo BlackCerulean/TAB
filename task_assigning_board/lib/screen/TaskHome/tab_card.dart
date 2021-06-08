@@ -41,7 +41,7 @@ class TabCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           MediaQuery.of(context).size.height * (0.005)), // 15
                     ),
-                    elevation: 10,
+                    elevation: 8,
                     child: Container(
                       child: Row(
                         children: [
@@ -118,8 +118,8 @@ class TabCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 130,
-                top: 138,
+                left: 132,
+                top: 135,
                 child: Container(
                   child: Image.asset(
                     "assets/icons/${task['Type'] == 'Web Application' ? 'smol web-app vector.png' : task['Type'] == 'Mobile' ? 'mobile-app Vector.png' : task['Type'] == 'Graphic Design' ? 'graphic Vector.png' : 'video-edit Vector.png'}",
