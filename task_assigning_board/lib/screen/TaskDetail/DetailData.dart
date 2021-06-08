@@ -23,7 +23,7 @@ class _DetailInformationState extends State<DetailInformation> {
     return StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Task')
-            .doc('g5W98MfrYUtzfdccWsmw')
+            .doc(widget.taskDB.id)
             .snapshots(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {

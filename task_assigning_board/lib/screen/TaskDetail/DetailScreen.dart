@@ -5,10 +5,15 @@ import 'package:task_assigning_board/component/bottom_nav.dart';
 import 'package:task_assigning_board/screen/TaskDetail/DetailData.dart';
 
 class DetailScreen extends StatelessWidget {
+  final DocumentSnapshot taskInfo;
+
+  const DetailScreen({Key key, this.taskInfo}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DetailInformation(),
+      body: DetailInformation(
+        taskDB: taskInfo,
+      ),
       bottomNavigationBar: MyBottomNavBar(),
     );
   }

@@ -42,8 +42,6 @@ class NavItems extends ChangeNotifier {
       id: 2,
       icon: "assets/icons/add-task Vector.png",
       destination: AddTaskScreen(),
-
-      // destination: favouritePage(),
     ),
     NavItem(
       id: 3,
