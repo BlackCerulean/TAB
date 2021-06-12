@@ -49,7 +49,7 @@ class Profile extends StatelessWidget {
                                   children: [
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(30, 20, 70, 0),
+                                            EdgeInsets.fromLTRB(30, 40, 70, 0),
                                         child: Text('Show Profile',
                                             style: GoogleFonts.roboto(
                                                 textStyle: TextStyle(
@@ -71,8 +71,7 @@ class Profile extends StatelessWidget {
                                   margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/profile-color Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.8,
                                   ),
                                 )
                               ],

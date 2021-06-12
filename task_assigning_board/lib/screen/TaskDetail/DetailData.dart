@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +7,7 @@ import 'package:task_assigning_board/screen/Authen.dart';
 import 'package:task_assigning_board/component/backgroundRegis.dart';
 
 import '../../size_config.dart';
+import '../tab_home.dart';
 
 class DetailInformation extends StatefulWidget {
   final DocumentSnapshot taskDB;
@@ -16,6 +18,7 @@ class DetailInformation extends StatefulWidget {
 }
 
 class _DetailInformationState extends State<DetailInformation> {
+  var uid = FirebaseAuth.instance.currentUser.uid;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -37,12 +40,15 @@ class _DetailInformationState extends State<DetailInformation> {
               body: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
                 Container(
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          if (task['Type'] == 'Web')
+                          if (task['Type'] == 'Web Application')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -58,7 +64,7 @@ class _DetailInformationState extends State<DetailInformation> {
                                             )))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(20, 0, 140, 0),
                                         child: Text('Task detail',
                                             style: GoogleFonts.roboto(
                                                 textStyle: TextStyle(
@@ -69,15 +75,15 @@ class _DetailInformationState extends State<DetailInformation> {
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/web-app vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
                             ),
-                          if (task['Type'] == 'Video')
+                          if (task['Type'] == 'Video Editing')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -93,7 +99,7 @@ class _DetailInformationState extends State<DetailInformation> {
                                             )))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(20, 0, 140, 0),
                                         child: Text('Task detail',
                                             style: GoogleFonts.roboto(
                                                 textStyle: TextStyle(
@@ -104,15 +110,15 @@ class _DetailInformationState extends State<DetailInformation> {
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/video-edit Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
                             ),
-                          if (task['Type'] == 'Graphic')
+                          if (task['Type'] == 'Graphic Design')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -128,7 +134,7 @@ class _DetailInformationState extends State<DetailInformation> {
                                             )))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(20, 0, 140, 0),
                                         child: Text('Task detail',
                                             style: GoogleFonts.roboto(
                                                 textStyle: TextStyle(
@@ -139,10 +145,10 @@ class _DetailInformationState extends State<DetailInformation> {
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/graphic Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
@@ -163,7 +169,7 @@ class _DetailInformationState extends State<DetailInformation> {
                                             )))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(20, 0, 140, 0),
                                         child: Text('Task detail',
                                             style: GoogleFonts.roboto(
                                                 textStyle: TextStyle(
@@ -174,10 +180,10 @@ class _DetailInformationState extends State<DetailInformation> {
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/mobile-app Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
@@ -213,7 +219,7 @@ class _DetailInformationState extends State<DetailInformation> {
                           fontSize: 24,
                         )))),
                 Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
@@ -413,6 +419,40 @@ class _DetailInformationState extends State<DetailInformation> {
                               fontSize: 16,
                             )))),
                   ],
+                ),
+                Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(mainColor),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: mainColor),
+                    )),
+                  ),
+                  child: Text(
+                    'Request',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    // uid = await getUID();
+                    CollectionReference ref =
+                        FirebaseFirestore.instance.collection('RequestStatus');
+                    // CollectionReference refe =
+                    //     FirebaseFirestore.instance.collection('AddRecipe');
+                    ref.add({
+                      'ClientRef': task['CID'], //field
+                      'StatusClient': 'Waitting', //field
+                      'StatusUser': 'Pending',
+                      'TaskRef': '/Task/' + widget.taskDB.id, //dropdown
+                      'UserRef': uid, //dropdown
+                    }).whenComplete(() => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TABLanding(),
+                        )));
+                  },
                 ),
                 Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 50)),
               ],
