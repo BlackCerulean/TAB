@@ -122,7 +122,7 @@ class TabCard extends StatelessWidget {
                 top: 135,
                 child: Container(
                   child: Image.asset(
-                    "assets/icons/${task['Type'] == 'Web Application' ? 'smol web-app vector.png' : task['Type'] == 'Mobile' ? 'mobile-app Vector.png' : task['Type'] == 'Graphic Design' ? 'graphic Vector.png' : 'video-edit Vector.png'}",
+                    "assets/icons/${task['Type'] == 'Web Application' ? 'smol web-app vector.png' : task['Type'] == 'Mobile Application' ? 'mobile-app Vector.png' : task['Type'] == 'Graphic Design' ? 'graphic Vector.png' : 'video-edit Vector.png'}",
                     scale: 0.7,
                   ),
                 ),

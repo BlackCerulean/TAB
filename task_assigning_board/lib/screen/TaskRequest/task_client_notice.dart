@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_assigning_board/component/bottom_nav.dart';
 import 'package:task_assigning_board/component/backgroundRegis.dart';
@@ -37,43 +38,50 @@ class FreelanceStatus extends StatelessWidget {
           return Scaffold(
             body: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     child: Column(
                       children: [
                         Row(
                           children: [
+                            IconButton(
+                              icon: SvgPicture.asset(
+                                "assets/icons/back.svg",
+                                color: mainColor,
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(30, 20, 70, 0),
+                                            EdgeInsets.fromLTRB(10, 40, 40, 0),
                                         child: Text('Show Profile',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontSize: 28,
-                                            )))),
+                                            style: TextStyle(
+                                              fontSize: 32,
+                                            ))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(30, 0, 70, 0),
+                                            EdgeInsets.fromLTRB(10, 7, 40, 20),
                                         child: Text('View your profile here',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                            style: TextStyle(
                                               color: Colors.grey,
-                                              fontSize: 16,
-                                            )))),
+                                              fontSize: 15,
+                                            ))),
                                   ],
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                  margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/profile-color Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.9,
                                   ),
                                 )
                               ],
@@ -83,22 +91,13 @@ class FreelanceStatus extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: defaultSize * 2,
-                          ),
-                          child: Container(
-                            color: Color.fromRGBO(112, 135, 255, 1),
-                            height: defaultSize * 0.1,
-                            width: defaultSize * 30,
-                          ),
-                        ),
-                      ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      color: Color(0xFF7087FF),
+                      height: 2,
+                      width: 235,
                     ),
                   ),
                   Column(

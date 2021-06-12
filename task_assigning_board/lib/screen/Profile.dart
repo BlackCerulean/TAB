@@ -11,12 +11,12 @@ import 'package:firebase_core/firebase_core.dart';
 
 import '../size_config.dart';
 
+final User user = FirebaseAuth.instance.currentUser;
 
-  final User user = FirebaseAuth.instance.currentUser;
 class Profile extends StatelessWidget {
   @override
   var _auth = FirebaseAuth.instance;
-   final uid = user.uid;
+  final uid = user.uid;
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double defaultSize = SizeConfig.defaultSize;
@@ -36,6 +36,7 @@ class Profile extends StatelessWidget {
           return Scaffold(
             body: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     child: Column(
@@ -46,32 +47,30 @@ class Profile extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(30, 40, 70, 0),
+                                            EdgeInsets.fromLTRB(20, 40, 70, 0),
                                         child: Text('Show Profile',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontSize: 28,
-                                            )))),
+                                            style: TextStyle(
+                                              fontSize: 32,
+                                            ))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(30, 0, 70, 0),
+                                            EdgeInsets.fromLTRB(20, 7, 70, 20),
                                         child: Text('View your profile here',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                            style: TextStyle(
                                               color: Colors.grey,
-                                              fontSize: 16,
-                                            )))),
+                                              fontSize: 15,
+                                            ))),
                                   ],
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                  margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/profile-color Vector.jpg',
-                                    scale: 0.8,
+                                    scale: 0.9,
                                   ),
                                 )
                               ],
@@ -81,22 +80,13 @@ class Profile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: defaultSize * 2,
-                          ),
-                          child: Container(
-                            color: Color.fromRGBO(112, 135, 255, 1),
-                            height: defaultSize * 0.1,
-                            width: defaultSize * 30,
-                          ),
-                        ),
-                      ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      color: Color(0xFF7087FF),
+                      height: 2,
+                      width: 195,
                     ),
                   ),
                   Column(
@@ -262,13 +252,13 @@ class Profile extends StatelessWidget {
                     alignment: Alignment.center,
                     child: RaisedButton(
                       onPressed: () async {
-                        print('Bye ${uid}');                       
+                        print('Bye ${uid}');
                         await Firebase.initializeApp().then((value) async {
                           await _auth.signOut().then((response) =>
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginScreen())));                           
+                                      builder: (context) => LoginScreen())));
                         });
                       },
                       shape: RoundedRectangleBorder(

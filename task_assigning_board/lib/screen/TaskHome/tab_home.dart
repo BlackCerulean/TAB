@@ -40,7 +40,10 @@ class TABLanding extends StatelessWidget {
                                 padding: EdgeInsets.fromLTRB(0, 7, 0, 0),
                                 child: Text(
                                   "Find your task here",
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ),
                             ],

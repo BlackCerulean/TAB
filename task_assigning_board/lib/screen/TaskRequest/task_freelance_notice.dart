@@ -34,147 +34,151 @@ class _RequestInfoState extends State<RequestInfo> {
               body: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
                 Container(
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          if (task['Type'] == 'Web')
+                          IconButton(
+                            icon: SvgPicture.asset(
+                              "assets/icons/back.svg",
+                              color: mainColor,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          if (task['Type'] == 'Web Application')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         margin:
                                             EdgeInsets.fromLTRB(10, 20, 0, 0),
                                         child: Text('Web Application',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
+                                            style: TextStyle(
                                               fontSize: 28,
-                                            )))),
+                                            ))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(10, 7, 140, 20),
                                         child: Text('Task detail',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                            style: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 16,
-                                            )))),
+                                            ))),
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/web-app vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
                             ),
-                          if (task['Type'] == 'Video')
+                          if (task['Type'] == 'Video Editing')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         margin:
                                             EdgeInsets.fromLTRB(10, 20, 0, 0),
-                                        child: Text('Video',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
+                                        child: Text('Video Editing',
+                                            style: TextStyle(
                                               fontSize: 28,
-                                            )))),
+                                            ))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(10, 7, 140, 20),
                                         child: Text('Task detail',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                            style: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 16,
-                                            )))),
+                                            ))),
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/video-edit Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
                             ),
-                          if (task['Type'] == 'Graphic')
+                          if (task['Type'] == 'Graphic Design')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         margin:
                                             EdgeInsets.fromLTRB(10, 20, 0, 0),
                                         child: Text('Computer Graphic',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
+                                            style: TextStyle(
                                               fontSize: 28,
-                                            )))),
+                                            ))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(10, 7, 140, 20),
                                         child: Text('Task detail',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                            style: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 16,
-                                            )))),
+                                            ))),
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/graphic Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
                             ),
-                          if (task['Type'] == 'Mobile')
+                          if (task['Type'] == 'Mobile Application')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         margin:
                                             EdgeInsets.fromLTRB(10, 20, 0, 0),
                                         child: Text('Mobile Application',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
+                                            style: TextStyle(
                                               fontSize: 28,
-                                            )))),
+                                            ))),
                                     Container(
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                            EdgeInsets.fromLTRB(10, 7, 140, 20),
                                         child: Text('Task detail',
-                                            style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                            style: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 16,
-                                            )))),
+                                            ))),
                                   ],
                                 ),
                                 Container(
+                                  margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
                                   child: Image.asset(
                                     'assets/icons/mobile-app Vector.jpg',
-                                    height: 100,
-                                    width: 100,
+                                    scale: 0.7,
                                   ),
                                 )
                               ],
@@ -184,22 +188,13 @@ class _RequestInfoState extends State<RequestInfo> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: defaultSize * 2,
-                        ),
-                        child: Container(
-                          color: Color.fromRGBO(112, 135, 255, 1),
-                          height: defaultSize * 0.1,
-                          width: defaultSize * 30,
-                        ),
-                      ),
-                    ],
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    color: Color(0xFF7087FF),
+                    height: 2,
+                    width: 365,
                   ),
                 ),
                 Container(

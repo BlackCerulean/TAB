@@ -16,7 +16,7 @@ class TABRequest extends StatelessWidget {
     return StreamBuilder(
       stream: FirebaseFirestore.instance
           .collection('TAB Users')
-          .doc(FirebaseAuth.instance.currentUser.uid)
+          .doc(uid)
           .snapshots(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -74,7 +74,7 @@ class TABRequest extends StatelessWidget {
                               alignment: Alignment.centerLeft,
                               color: Colors.deepPurpleAccent,
                               height: 2,
-                              width: 235,
+                              width: 245,
                             ),
                           ),
                           Flexible(
