@@ -582,11 +582,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       'CompanyMail': _email.text,
                       'Type': _category.toString(),
                       'CID': uid,
-                    }).whenComplete(() => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TABLanding(),
-                        )));
+                    }).whenComplete(() => Navigator.pop(context));
                   },
                 ),
               ],
