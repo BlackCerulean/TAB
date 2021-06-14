@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_assigning_board/component/backgroundRegis.dart';
 import 'package:task_assigning_board/component/bottom_nav.dart';
+import 'package:task_assigning_board/screen/tab_home.dart';
 
 import '../../size_config.dart';
 
@@ -18,7 +19,6 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
-
   var uid = FirebaseAuth.instance.currentUser.uid;
 
   String _category;
@@ -455,7 +455,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         });
   }
 
-  List listCategoryItem = ["Web", "Mobile", "Video", "Graphic"];
+  List listCategoryItem = [
+    "Web Application",
+    "Mobile Application",
+    "Video Editing",
+    "Graphic Design"
+  ];
   Widget _buildCategoryField() {
     return Container(
         child: Center(
@@ -495,107 +500,97 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     SizeConfig().init(context);
     double defaultSize = SizeConfig.defaultSize;
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                  margin: EdgeInsets.fromLTRB(10, 20, 0, 0),
-                  child: Text('Create your new task',
-                      style: GoogleFonts.roboto(
-                          textStyle: TextStyle(
-                        fontSize: 28,
-                      )))),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                  margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text('Fill your task information',
-                      style: GoogleFonts.roboto(
-                          textStyle: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        color: Colors.grey,
-                        fontSize: 16,
-                      )))),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
+            Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: defaultSize * 2,
+                Container(
+                    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    child: Text('Create your new task',
+                        style: TextStyle(
+                          fontSize: 32,
+                        ))),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                    margin: EdgeInsets.fromLTRB(20, 7, 20, 20),
+                    child: Text('Fill your task information',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                        ))),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                color: Color(0xFF7087FF),
+                height: 2,
+                width: 320,
+              ),
+            ),
+            _buildProjectNameField(),
+            _buildDescriptionField(),
+            _buildCompanyField(),
+            _buildClientField(),
+            _buildRequirementField(),
+            _buildRewardField(),
+            _buildAddressField(),
+            _buildContactField(),
+            _buildEmailField(),
+            _buildCategoryField(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(mainColor),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: mainColor),
+                    )),
                   ),
-                  child: Container(
-                    color: Color.fromRGBO(112, 135, 255, 1),
-                    height: defaultSize * 0.1,
-                    width: defaultSize * 30,
+                  child: Text(
+                    'Create Task',
+                    style: TextStyle(color: Colors.white),
                   ),
+                  onPressed: () {
+                    // uid = await getUID();
+                    CollectionReference ref =
+                        FirebaseFirestore.instance.collection('Task');
+                    // CollectionReference refe =
+                    //     FirebaseFirestore.instance.collection('AddRecipe');
+                    ref.add({
+                      'ProjectName': _projectName.text, //field
+                      'Description': _description.text, //field
+                      'Company': _company.text,
+                      'Client': _client.text, //dropdown
+                      'Requirement': _requirement.text, //dropdown
+                      'Rewards': _reward.text,
+                      'Address': _address.text,
+                      'CompanyNumber': _contact.text,
+                      'CompanyMail': _email.text,
+                      'Type': _category.toString(),
+                      'CID': uid,
+                    }).whenComplete(() => Navigator.pop(context));
+                  },
                 ),
               ],
             ),
-          ),
-          _buildProjectNameField(),
-          _buildDescriptionField(),
-          _buildCompanyField(),
-          _buildClientField(),
-          _buildRequirementField(),
-          _buildRewardField(),
-          _buildAddressField(),
-          _buildContactField(),
-          _buildEmailField(),
-          _buildCategoryField(),
-          ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(mainColor),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: mainColor),
-              )),
-            ),
-            child: Text(
-              'Create Task',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              // uid = await getUID();
-              CollectionReference ref =
-                  FirebaseFirestore.instance.collection('Task');
-              // CollectionReference refe =
-              //     FirebaseFirestore.instance.collection('AddRecipe');
-              ref.add({
-                'ProjectName': _projectName.text, //field
-                'Description': _description.text, //field
-                'Company': _company.text,
-                'Client': _client.text, //dropdown
-                'Requirement': _requirement.text, //dropdown
-                'Rewards': _reward.text,
-                'Address': _address.text,
-                'CompanyNumber': _contact.text,
-                'CompanyMail': _email.text,
-                'Type': _category.toString(),
-              }).whenComplete(() => Navigator.pop(context));
-              // refe.add({
-              //   'name': _foodname.text, //field
-              //   'description': _description.text, //field
-              //   'ingredient': IngredientList,
-              //   'cuisine': _category.toString(), //dropdown
-              //   'difficulty': _level.toString(), //dropdown
-              //   'cookingStep': CookingStepList,
-              //   'imgUrl': url,
-              // }).whenComplete(() => Navigator.pop(context));
-            },
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-    bottomNavigationBar: MyBottomNavBar(),
+      bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }
