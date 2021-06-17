@@ -85,6 +85,9 @@ class TABRequest extends StatelessWidget {
                               child: ListView.builder(
                                 itemCount: snapshot.data.docs.length,
                                 itemBuilder: (context, index) {
+                                  if (!snapshot.hasData) {
+                                    return Text('Loading...');
+                                  }
                                   var request =
                                       snapshot.data.docs[index].data();
                                   return request['ClientRef'] ==
@@ -112,6 +115,9 @@ class TABRequest extends StatelessWidget {
                                             builder: (BuildContext context,
                                                 AsyncSnapshot<DocumentSnapshot>
                                                     snapshot) {
+                                              if (!snapshot.hasData) {
+                                                return Text('Loading...');
+                                              }
                                               var task = snapshot.data.data();
                                               return Column(
                                                 children: [
@@ -222,6 +228,9 @@ class TABRequest extends StatelessWidget {
                                                     AsyncSnapshot<
                                                             DocumentSnapshot>
                                                         snapshot) {
+                                                  if (!snapshot.hasData) {
+                                                    return Text('Loading...');
+                                                  }
                                                   var task =
                                                       snapshot.data.data();
                                                   return Column(
